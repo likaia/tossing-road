@@ -1,8 +1,6 @@
 language: node_js
 node_js:
   - lts/*
-env:
-  - API_SERVER=https://www.kaisir.cn PUBLIC_PATH=https://tossing-road.netlify.com
 # 默认是yarn, 如果有yarn.lock的话
 install:
   - npm
