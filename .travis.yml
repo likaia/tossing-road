@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - lts/*
+# 默认是 yarn test
+script:
+  - npm run build
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  keep-history: true
+  local-dir: dist
+  on:
+    branch: master
+  github-token: $GITHUB_TOKEN
