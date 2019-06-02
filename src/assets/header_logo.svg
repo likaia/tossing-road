@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="176" height="33" viewBox="0 0 176 33">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 25px;
+        font-family: "PingFang SC";
+        font-weight: 600;
+      }
+
+      .cls-2 {
+        fill: #009a61;
+      }
+    </style>
+  </defs>
+  <text id="tossingroad" class="cls-1" x="15.399" y="23.077">tossing<tspan class="cls-2">road</tspan></text>
+</svg>

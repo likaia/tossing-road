@@ -1,0 +1,17 @@
+{
+  "recommend": "为你推荐",
+  "popular": "近期热门",
+  "newest": "最新内容",
+  "frontEnd": "前端",
+  "rearEnd": "后端",
+  "applets": "小程序",
+  "AI": "人工智能",
+  "blockchain": "区块链",
+  "security": "安全",
+  "android": "Android",
+  "ios": "ios",
+  "tool": "工具",
+  "programmer":"程序员",
+  "industry": "行业",
+  "TROfficial":"TR官方"
+}
