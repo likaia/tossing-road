@@ -500,35 +500,19 @@
             //
             // },
             //Promise输出顺序
-            outputOrder: () => {
-                new Promise((fulfil, reject) => {
-                    console.log(1);
-                    setTimeout(() => {
-                        console.log(4);
-                    }, 0);
-                    fulfil(3);
-                }).then((x) => {
-                    console.log(x);
-                });
-                console.log(2);
-            },
+            // outputOrder: () => {
+            //     new Promise((fulfil, reject) => {
+            //         console.log(1);
+            //         setTimeout(() => {
+            //             console.log(4);
+            //         }, 0);
+            //         fulfil(3);
+            //     }).then((x) => {
+            //         console.log(x);
+            //     });
+            //     console.log(2);
+            // },
             //this指向问题
-            foo() {
-                console.log("oo");
-            },
-            bar() {
-                setTimeout(function () {
-                    this.foo();
-                }, 0);
-                /**
-                 * setTimeout(()=>{
-                 *     this.foo  //this指向vue示例
-                 * },0)
-                 * */
-            },
-            arrowFunction: (_this) => {
-                console.log(this); //undefind
-            }
         }
     }
 </script>
