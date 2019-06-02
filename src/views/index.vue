@@ -373,18 +373,18 @@
              *1. all方法所有方法执行成功才会执行resolve,否则执行reject
              *2. catch方法和.then方法第二个参数的区别：catch方法在执行resolve的回调时，如果抛出异常了（代码出错了），那么并不会报错卡死js，而是会进到这个catch方法中
              */
-             /* Promise.all([this.getUserById(9), this.getMsgCount()]).then(function (results) {
-                console.log(results);
-            }).catch(function (reason) {
-                //catch方法在执行resolve的回调时，如果抛出异常了（代码出错了），那么并不会报错卡死js，而是会进到这个catch方法中
-                console.log(reason);
-            });
-             Promise.all([this.getUserById(6), this.getMsgCount()]).then(function (data) {
-                console.log(data);
-            }, function (data) {
-                //如果resolve回调时，如果抛出异常会卡死js
-                console.log(data);
-            });*/
+            /* Promise.all([this.getUserById(9), this.getMsgCount()]).then(function (results) {
+               console.log(results);
+           }).catch(function (reason) {
+               //catch方法在执行resolve的回调时，如果抛出异常了（代码出错了），那么并不会报错卡死js，而是会进到这个catch方法中
+               console.log(reason);
+           });
+            Promise.all([this.getUserById(6), this.getMsgCount()]).then(function (data) {
+               console.log(data);
+           }, function (data) {
+               //如果resolve回调时，如果抛出异常会卡死js
+               console.log(data);
+           });*/
             // await方法：给每个promise对象添加catch方法，如果一个方法报错，不会影响整个方法的执行
             // this.init();
             //测试Promise输出顺序
@@ -421,14 +421,12 @@
                         clearInterval(that.liveTimer);
                     }
                 }, 0.3);
-
             },
             //直播切换:下一个
             nextLive: function (clickStatus) {
                 if (clickStatus) {
                     clearInterval(this.liveOut);
                 }
-
                 clearInterval(this.liveTimer);
                 let that = this;
                 let nowVal = that.livePlaySpeed;
@@ -458,7 +456,6 @@
                 let that = this;
                 that.liveOut = setInterval(that.nextLive, 2500);
             },
-
             /*测试Promise*/
             //获取用户信息
             getUserById: function (id) {
@@ -479,40 +476,52 @@
                     resolve("消息数量为" + 100);
                 })
             },
-            // async init() {
-            //     /**
-            //      * 1、await必须在async里面
-            //
-            //      2、async作用于函数
-            //
-            //      3、async返回一个promise对象
-            //
-            //      4、await后最好跟一个promise函数，当然也可以是同步的，但是这个就没有意义了
-            //      */
-            //     await this.getUserById(8).then(function (results) {
-            //         console.log(results);
-            //     }).catch(function (reason) {
-            //         console.log(reason)
-            //     });
-            //     await this.getMsgCount().then(function (results) {
-            //         console.log(results);
-            //     });
-            //
-            // },
+            async init() {
+                /**
+                 * 1、await必须在async里面
+                 2、async作用于函数
+                 3、async返回一个promise对象
+                 4、await后最好跟一个promise函数，当然也可以是同步的，但是这个就没有意义了
+                 */
+                await this.getUserById(8).then(function (results) {
+                    console.log(results);
+                }).catch(function (reason) {
+                    console.log(reason)
+                });
+                await this.getMsgCount().then(function (results) {
+                    console.log(results);
+                });
+            },
             //Promise输出顺序
-            // outputOrder: () => {
-            //     new Promise((fulfil, reject) => {
-            //         console.log(1);
-            //         setTimeout(() => {
-            //             console.log(4);
-            //         }, 0);
-            //         fulfil(3);
-            //     }).then((x) => {
-            //         console.log(x);
-            //     });
-            //     console.log(2);
-            // },
+            outputOrder: () => {
+                new Promise((fulfil, reject) => {
+                    console.log(1);
+                    setTimeout(() => {
+                        console.log(4);
+                    }, 0);
+                    fulfil(3);
+                }).then((x) => {
+                    console.log(x);
+                });
+                console.log(2);
+            },
             //this指向问题
+            foo(){
+                console.log("oo");
+            },
+            bar(){
+                setTimeout(function () {
+                    this.foo();
+                },0);
+                /**
+                 * setTimeout(()=>{
+                 *     this.foo  //this指向vue示例
+                 * },0)
+                 * */
+            },
+            arrowFunction:(_this)=>{
+                console.log(this); //undefind
+            }
         }
     }
 </script>
