@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - lts/*
+env:
+  - API_SERVER=https://www.kaisir.cn PUBLIC_PATH=https://tossing-road.netlify.com
+# 默认是yarn, 如果有yarn.lock的话
+install:
+  - npm
+# 默认是 yarn test
+script:
+  - npm run build
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  keep-history: true
+  local-dir: dist
+  on:
+    branch: master
+  github-token: $GITHUB_TOKEN
