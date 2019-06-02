@@ -373,18 +373,18 @@
              *1. all方法所有方法执行成功才会执行resolve,否则执行reject
              *2. catch方法和.then方法第二个参数的区别：catch方法在执行resolve的回调时，如果抛出异常了（代码出错了），那么并不会报错卡死js，而是会进到这个catch方法中
              */
-            /* Promise.all([this.getUserById(9), this.getMsgCount()]).then(function (results) {
-               console.log(results);
-           }).catch(function (reason) {
-               //catch方法在执行resolve的回调时，如果抛出异常了（代码出错了），那么并不会报错卡死js，而是会进到这个catch方法中
-               console.log(reason);
-           });
-            Promise.all([this.getUserById(6), this.getMsgCount()]).then(function (data) {
-               console.log(data);
-           }, function (data) {
-               //如果resolve回调时，如果抛出异常会卡死js
-               console.log(data);
-           });*/
+            //  /* Promise.all([this.getUserById(9), this.getMsgCount()]).then(function (results) {
+            //     console.log(results);
+            // }).catch(function (reason) {
+            //     //catch方法在执行resolve的回调时，如果抛出异常了（代码出错了），那么并不会报错卡死js，而是会进到这个catch方法中
+            //     console.log(reason);
+            // });
+            //  Promise.all([this.getUserById(6), this.getMsgCount()]).then(function (data) {
+            //     console.log(data);
+            // }, function (data) {
+            //     //如果resolve回调时，如果抛出异常会卡死js
+            //     console.log(data);
+            // });*/
             // await方法：给每个promise对象添加catch方法，如果一个方法报错，不会影响整个方法的执行
             // this.init();
             //测试Promise输出顺序
@@ -513,20 +513,20 @@
                 console.log(2);
             },
             //this指向问题
-            foo(){
+            foo() {
                 console.log("oo");
             },
-            bar(){
+            bar() {
                 setTimeout(function () {
                     this.foo();
-                },0);
+                }, 0);
                 /**
                  * setTimeout(()=>{
                  *     this.foo  //this指向vue示例
                  * },0)
                  * */
             },
-            arrowFunction:(_this)=>{
+            arrowFunction: (_this) => {
                 console.log(this); //undefind
             }
         }
